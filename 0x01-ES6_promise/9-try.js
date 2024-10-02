@@ -4,10 +4,10 @@ export default function guardrail(mathFunction) {
   try {
     // Execute the mathFunction and push the result to the queue
     const result = mathFunction();
-    queue.push(result);
+    queue.push(result); // Push the result if successful
   } catch (error) {
     // If an error is thrown, push the error message to the queue
-    queue.push(error.message);
+    queue.push(`Error: ${error.message}`); // Format the error message
   } finally {
     // Always push this message to the queue
     queue.push('Guardrail was processed');
