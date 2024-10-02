@@ -30,7 +30,7 @@ This repository contains a series of JavaScript tasks focused on handling promis
 1. Clone this repository:
    ```bash
    git clone https://github.com/MBajily/alx-backend-javascript
-   cd javascript-promise-tasks
+   cd alx-backend-javascript
    ```
 
 2. Install dependencies:
