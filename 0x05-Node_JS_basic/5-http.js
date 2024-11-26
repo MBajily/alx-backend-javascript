@@ -9,27 +9,27 @@ function countStudents(path) {
         reject(new Error('Cannot load the database'));
         return;
       }
-      
-      const lines = data.split('\n').filter(line => line.trim() !== '');
+
+      const lines = data.split('\n').filter((line) => line.trim() !== '');
       lines.shift(); // Remove header
-      
-      const students = lines.map(line => line.split(','));
-      
+
+      const students = lines.map((line) => line.split(','));
+
       let output = `Number of students: ${students.length}\n`;
-      
+
       const fields = {};
-      students.forEach(student => {
+      students.forEach((student) => {
         const [firstname, , , field] = student;
         if (!fields[field]) {
           fields[field] = [];
         }
         fields[field].push(firstname);
       });
-      
+
       for (const [field, names] of Object.entries(fields)) {
         output += `Number of students in ${field}: ${names.length}. List: ${names.join(', ')}\n`;
       }
-      
+
       resolve(output.trim());
     });
   });
@@ -37,7 +37,7 @@ function countStudents(path) {
 
 const app = http.createServer(async (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
-  
+
   if (req.url === '/') {
     res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
