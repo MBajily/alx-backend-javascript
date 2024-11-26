@@ -1,11 +1,14 @@
 // 1-stdin.js
 process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
-process.stdin.on('readable', () => {
-  const name = process.stdin.read();
+process.stdin.setEncoding('utf8');
 
-  if (name) {
-    process.stdout.write(`Your name is: ${name.toString().trim()}\n`);
+process.stdin.on('readable', () => {
+  const chunk = process.stdin.read();
+
+  if (chunk !== null) {
+    const name = chunk.trim();
+    process.stdout.write(`Your name is: ${name}\n`);
   }
 });
 
